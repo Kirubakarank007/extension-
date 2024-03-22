@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <input type="text" name="" id="input-el">
-    <button id="input-btn">SAVE INPUT</button>
-    <button id="save-btn">SAVE TAB</button>
-    <button id="delete-btn">DELETE</button>
-    <ul id="ul-el">
-    </ul>
+    <div id="wrapper">
+        <input type="text" name="" id="input-el" placeholder="Type here...">
+            <div id="wrap-btn">
+                <button id="input-btn">SAVE INPUT</button>
+                <button id="save-btn">SAVE TAB</button>
+                <button id="delete-btn">DELETE</button>
+            </div>
+            <button id="clear-btn" class="scrolable.ul">CLEAR ALL</button>
+                <ul id="ul-el"></ul>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>

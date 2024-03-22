@@ -4,6 +4,7 @@ const  inputBtn=document.getElementById("input-btn")
 const ulEl=document.getElementById("ul-el")
 let deleteBtn=document.getElementById("delete-btn")
 let saveBtn=document.getElementById("save-btn")
+let clearBtn=document.getElementById("clear-btn")
 
 let localStorageFrom=JSON.parse(localStorage.getItem("myLeads"))
 if(localStorageFrom)
@@ -32,18 +33,38 @@ saveBtn.addEventListener("click", function(){
         myLeads.push(tabs[0].url)
         localStorage.setItem("myLeads", JSON.stringify(myLeads) )
         pushel(myLeads)
+        ulEl.scrollTop=ulEl.scrollHeight;
     });
 })
+
+//click enter in the system data will added
+inputEl.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); 
+        inputBtn.click(); 
+    }
+});
 
 inputBtn.addEventListener("click",function(){
     myLeads.push(inputEl.value)
     inputEl.value=""
     localStorage.setItem ("myLeads",JSON.stringify(myLeads))
     pushel(myLeads)
+    ulEl.scrollTop=ulEl.scrollHeight;
 })
 
+deleteBtn.addEventListener("click",function(){
+    if(myLeads.length>0){
+        myLeads.pop()
+        pushel(myLeads)
+        console.log("last element is deleted")
+    }
+    else{
+        console.log("no one deleted")
+    }
+})
 
-deleteBtn.addEventListener("dblclick",function(){
+clearBtn.addEventListener("dblclick",function(){
     localStorage.clear()
     console.log("clicked")
     myLeads=[]
